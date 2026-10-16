@@ -1,0 +1,25 @@
+# Scenario 1: Cloud Run user without BAPI support (custom Cloud Build config)
+# Run with:
+#   gcloud builds submit --region=us-central1 --config=cloudbuild.yaml
+#   gcloud run deploy recipe-example --region=us-central1 --allow-unauthenticated \
+#     --image=us-central1-docker.pkg.dev/$PROJECT_ID/my-repo/recipe-example
+
+availableSecrets:
+  secretManager:
+    - versionName: projects/$PROJECT_ID/secrets/recipe-db-token/versions/latest
+      env: RECIPE_DB_TOKEN
+
+steps:
+  - name: gcr.io/k8s-skaffold/pack
+    entrypoint: pack
+    secretEnv: [RECIPE_DB_TOKEN]
+    args:
+      - build
+      - us-central1-docker.pkg.dev/$PROJECT_ID/my-repo/recipe-example
+      - --network
+      - cloudbuild
+      - --publish
+      - --env
+      - RECIPE_DB_TOKEN
+      - --builder
+      - gcr.io/buildpacks/builder:latest

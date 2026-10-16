@@ -1,0 +1,15 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --bg-ivory: #FAF7F2;
+  --text-espresso: #1C1917;
+}
+
+body {
+  background-color: var(--bg-ivory);
+  color: var(--text-espresso);
+  font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+  -webkit-font-smoothing: antialiased;
+}

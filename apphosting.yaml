@@ -1,0 +1,7 @@
+# Scenario 4: Firebase App Hosting
+# Makes Secret Manager secret `recipe-db-token` available as RECIPE_DB_TOKEN during `next build`
+env:
+  - variable: RECIPE_DB_TOKEN
+    secret: recipe-db-token
+    availability:
+      - BUILD

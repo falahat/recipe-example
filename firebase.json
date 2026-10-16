@@ -1,0 +1,6 @@
+{
+  "run": {
+    "serviceId": "recipe-example",
+    "region": "us-central1"
+  }
+}
