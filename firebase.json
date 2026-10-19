@@ -1,0 +1,10 @@
+{
+  "run": {
+    "serviceId": "recipe-example",
+    "region": "us-central1"
+  },
+  "apphosting": {
+    "backendId": "recipe-example",
+    "rootDir": "/"
+  }
+}

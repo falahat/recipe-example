@@ -1,0 +1,10 @@
+# Firebase App Hosting configuration (Scenario 4)
+# Makes the Secret Manager secret `recipe-db-token` available as `RECIPE_DB_TOKEN`
+# during BOTH `next build` (BUILD, for static popular recipes) and request time
+# (RUNTIME, for dynamic long-tail recipes).
+env:
+  - variable: RECIPE_DB_TOKEN
+    secret: recipe-db-token
+    availability:
+      - BUILD
+      - RUNTIME
